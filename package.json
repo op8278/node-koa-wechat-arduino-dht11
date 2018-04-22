@@ -1,0 +1,22 @@
+{
+  "name": "node-koa-wechat-dht11",
+  "version": "1.0.0",
+  "description": "微信公众号与温湿度传感器dht11配合",
+  "author": "op8278 <gdou_fish@163.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -w ./server -w ./start.js --ignore ./server/database/json --exec node ./start.js"
+  },
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.0.15",
+    "ramda": "^0.25.0",
+    "sha1": "^1.1.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
