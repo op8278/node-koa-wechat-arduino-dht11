@@ -9,17 +9,16 @@ require('@babel/register')({
     [
       'module-resolver',
       {
-        root: ['./server'],
         alias: {
-          '~': './',
-          database: './database',
-          config: './config',
-          wechat: './wechat',
-          decorator: './decorator',
-          middleware: './middleware',
+          database: './server/database',
+          config: './server/config',
+          wechat: './server/wechat',
+          decorator: './server/decorator',
+          middleware: './server/middleware',
         },
       },
     ],
   ],
 });
+require('@babel/polyfill');
 require('./server');

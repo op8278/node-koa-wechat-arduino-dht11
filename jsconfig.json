@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "database/*": ["./server/database/*"],
+      "config/*": ["./server/config/*"],
+      "wechat/*": ["./server/wechat/*"],
+      "decorator/*": ["./server/decorator/*"],
+      "middleware/*": ["./server/middleware/*"]
+    },
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules"]
+}
