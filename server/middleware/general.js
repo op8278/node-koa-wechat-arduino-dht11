@@ -6,7 +6,7 @@ export const addBody = app => {
 };
 // 应用koa-session中间件 => ctx.session
 export const addSession = app => {
-  app.keys = ['ice and fire'];
+  app.keys = ['hdt11'];
   app.use(
     koaSession(
       {

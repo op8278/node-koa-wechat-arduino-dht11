@@ -1,7 +1,7 @@
 export default {
   server: {
     host: '127.0.0.1',
-    port: 3001,
+    port: 3000,
   },
   db: 'mongodb://localhost/hdt11', // mongo地址
   site_root_url: 'http://ssr.hk1.mofasuidao.cn', // 项目域名
