@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "database/*": ["./server/database/*"],
       "config/*": ["./server/config/*"],

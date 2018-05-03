@@ -3,6 +3,9 @@ export default {
     host: '127.0.0.1',
     port: 3000,
   },
+  websocket: {
+    port: 8088,
+  },
   db: 'mongodb://localhost/hdt11', // mongo地址
   site_root_url: 'http://ssr.hk1.mofasuidao.cn', // 项目域名
   admin_email: 'admin@admin.com', // 默认管理员邮箱(帐号)

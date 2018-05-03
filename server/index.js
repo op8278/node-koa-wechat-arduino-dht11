@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import R from 'ramda';
 import { resolve } from 'path';
-import config from 'config/';
+import config from 'config';
 
 const host = process.env.HOST || config.server.host;
 const port = process.env.PORT || config.server.port;

@@ -1,4 +1,4 @@
-import ejs from 'ejs'
+import ejs from 'ejs';
 
 const tpl = `
   <xml>
@@ -44,7 +44,7 @@ const tpl = `
       </Articles>
     <% } %>
   </xml>
-`
+`;
 
-const compiled = ejs.compile(tpl)
-export default compiled
+const compiled = ejs.compile(tpl);
+export default compiled;

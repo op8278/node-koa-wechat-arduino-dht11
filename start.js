@@ -11,7 +11,7 @@ require('@babel/register')({
       {
         alias: {
           database: './server/database',
-          config: './server/config',
+          config: './config',
           wechat: './server/wechat',
           decorator: './server/decorator',
           middleware: './server/middleware',

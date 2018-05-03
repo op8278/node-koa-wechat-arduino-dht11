@@ -12,7 +12,7 @@ export class TestController {
       console.log(retData);
       // 整理数据
       // 返回JSON数据
-      wss.broadcast('测试跨文件访问websockt的广播send方法')
+      wss.broadcast('测试跨文件访问websockt的广播send方法');
       ctx.apiSuccess(retData);
     } catch (error) {
       console.log('controller---test---失败');
