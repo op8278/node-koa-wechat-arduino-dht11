@@ -1,7 +1,7 @@
 const WebSocket = require('ws')
 
 // websockt服务端
-const wss = new WebSocket.Server({ port: 8080 })
+const wss = new WebSocket.Server({ port: 8088 })
 
 // 广播客户端消息的方法
 wss.broadcast = (data) => {
