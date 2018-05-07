@@ -1,4 +1,6 @@
 const TEST_MESSAGE = '测试被动回复--模版';
+
+// TODO: 优化面条式代码
 export default async (ctx, next) => {
   const message = ctx.formatDataFromWechat;
   let replayDataToWechat; // 准备发送给微信的数据
@@ -7,12 +9,14 @@ export default async (ctx, next) => {
   // 判断接收的数据类型
   if (message.MsgType === 'text') {
     replayDataToWechat = message.Content;
+    // TODO: 判断是否控制指令
   } else if (message.MsgType === 'image') {
     replayDataToWechat = {
       type: 'image',
       mediaId: message.MediaId,
     };
   } else if (message.MsgType === 'voice') {
+    // TODO: 语音判断是否控制指令
     replayDataToWechat = {
       type: 'voice',
       mediaId: message.MediaId,

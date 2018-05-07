@@ -6,7 +6,14 @@ export default {
   websocket: {
     port: 8088,
   },
-  db: 'mongodb://localhost/hdt11', // mongo地址
+  db: {
+    database: 'hdt11',
+    dialect: 'mysql',
+    port: '3306',
+    host: '127.0.0.1',
+    username: 'root',
+    password: 'root',
+  },
   site_root_url: 'http://ssr.hk1.mofasuidao.cn', // 项目域名
   admin_email: 'admin@admin.com', // 默认管理员邮箱(帐号)
   admin_password: 'admin', // 默认管理员密码
