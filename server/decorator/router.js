@@ -33,6 +33,7 @@ export class Route {
       // 装入koa-router
       this.router[conf.method](routerPath, ...controllers);
     }
+
     // koa使用koa-router中间件
     this.app.use(this.router.routes());
     this.app.use(this.router.allowedMethods());

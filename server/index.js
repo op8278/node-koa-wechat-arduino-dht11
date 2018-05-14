@@ -12,6 +12,7 @@ const r = path => resolve(__dirname, path);
 class Server {
   constructor() {
     this.app = new Koa();
+    this.originApp = null;
     console.log('server constructor start');
     this.useMiddleWares(this.app)(MIDDLEWARES);
   }
@@ -30,10 +31,16 @@ class Server {
       ctx.status = 200;
       ctx.req.session = ctx.session; // 绑定koa-session的ctx.session到ctx.req.session中
     });
-
-    this.app.listen(port, host);
+    this.originApp = this.app.listen(port, host);
     console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
+  }
+  startWebsocket() {
+    // 开启websocket服务器
+    require('../websocket').start(this.originApp);
   }
 }
 const app = new Server();
 app.start();
+app.startWebsocket();
+
+export default app;

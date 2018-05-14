@@ -5,7 +5,7 @@ import hdt11_data from '../database/model/hdt11_data';
 @controller('/test')
 export class TestController {
   @get('/a')
-  async test(ctx, next) {
+  async testget(ctx, next) {
     // 获取查询参数limit
     const { limit = 10 } = ctx.query;
     try {
@@ -22,7 +22,7 @@ export class TestController {
     }
   }
   @post('/a')
-  async test(ctx, next) {
+  async testpost(ctx, next) {
     try {
       // 获取post过来的参数
       const { temperature, humidity } = ctx.request.body;
