@@ -1,12 +1,13 @@
 const WebSocket = require('ws');
-const config = require('config').default;
 const hdt11Data = require('../server/database/model/hdt11_data').default;
 
 // websockt服务端
 let wss = null;
+
 function start(app) {
-  // const wss = new WebSocket.Server({ port: config.websocket.port || 8088 });
-  wss = new WebSocket.Server({ server: app });
+  // 开启websocket服务端
+  // wss = new WebSocket.Server({ server: app });
+  wss = new WebSocket.Server({ port: 8088 });
 
   // 广播客户端消息的方法
   wss.broadcast = data => {

@@ -8,7 +8,7 @@ const TYPE_JSON = 'application/json';
 @controller('/wechat')
 export class wechatController {
   @get('/message')
-  async getMessageFromWechat(ctx, next) {
+  async invalidateMessageFromWechat(ctx, next) {
     // 校验微信验证
     if (!util.isValidatedWechatSignature(ctx)) {
       console.log('不是来自微信的get请求');
