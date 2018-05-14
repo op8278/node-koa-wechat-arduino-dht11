@@ -5,7 +5,7 @@ import config from 'config';
 
 const host = process.env.HOST || config.server.host;
 const port = process.env.PORT || config.server.port;
-const MIDDLEWARES = ['database', 'general', 'router.js'];
+const MIDDLEWARES = ['database', 'general', 'router'];
 
 const r = path => resolve(__dirname, path);
 
