@@ -28,13 +28,17 @@ function start(app) {
 
     ws.on('message', message => {
       console.log('收到来自esp8266的信息 --- ' + message);
-
-      console.log(message);
-      // TODO:校验数据合法性
-      const temperature = 12;
-      const humidity = 24;
+      // TODO: 校验数据合法性
+      const [temperature, humidity] = message.split(' ');
       // TODO: 保存到数据库中
-      // hdt11Data.create({ temperature, humidity });
+      hdt11Data
+        .create({ temperature, humidity })
+        .then(data => {
+          console.log('保存成功');
+        })
+        .catch(err => {
+          console.log(err);
+        });
     });
     ws.on('close', (code, reason) => {
       console.log('关闭与esp8266的连接 --- ' + code + reason);

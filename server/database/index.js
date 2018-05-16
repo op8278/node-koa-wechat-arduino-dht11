@@ -29,13 +29,5 @@ const sequelize = new Sequelize(config.db.database, config.db.username, config.d
     },
   },
 });
-// 导入ORM映射表
-// TODO: 待删除:测试是否能拿到数据
-// const hdt11_data = sequelize.import('../database/model/hdt11_data');
-// hdt11_data.findAll().then(data => {
-//   for (const item of data) {
-//     console.log(item);
-//   }
-// });
 
 export default sequelize;

@@ -20,6 +20,7 @@ const hdt11Data = db.define('hdt11_data', {
   update_time: {
     type: Sequelize.DATE,
   },
+  // TODO: 添加校验temperature,humidity的规则
 });
 
 export default hdt11Data;
