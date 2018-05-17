@@ -29,7 +29,7 @@ export const getMessageFromWechat = async (ctx, next, reply) => {
   ctx.replayDataToWechat = await replyStrategy.apply(ctx, [ctx, next]);
   // 广播给websocket客户端
   // TODO: 判断是否传输成功
-  wss.broadcast(message.Content);
+  // wss.broadcast(message.Content);
   // 组装xml消息返回给微信
   const xml = util.tpl(ctx.formatDataFromWechat, ctx.replayDataToWechat);
   console.log('----------回复的数据-------------');
