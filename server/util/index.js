@@ -88,7 +88,7 @@ export function tpl(receiveDataFromWechat, replyData) {
     type = TYPE_NEWS;
   }
   if (!replyData) {
-    replyData = '没有回复内容';
+    replyData = '没有该指令';
   }
   if (replyData && replyData.type) {
     type = replyData.type;

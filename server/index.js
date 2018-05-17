@@ -36,7 +36,8 @@ class Server {
   }
   startWebsocket() {
     // 开启websocket服务器
-    require('../websocket').start(this.originApp);
+    // require('../websocket').start(this.originApp);
+    require('../websocket');
   }
 }
 const app = new Server();
