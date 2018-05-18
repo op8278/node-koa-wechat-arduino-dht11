@@ -32,10 +32,10 @@ const commandFunc = {
         return '开启led成功';
       } catch (error) {
         console.log(error);
-        return '开启led失败';
+        return `开启led失败\n${error.message}`;
       }
     } else {
-      return '已经与硬件端断开连接,开启led失败';
+      return 'websocket服务器奔溃,开启led失败';
     }
   },
   // 关闭led
@@ -49,10 +49,10 @@ const commandFunc = {
         return '关闭led成功';
       } catch (error) {
         console.log(error);
-        return '关闭led失败';
+        return `关闭led失败\n${error.message}`;
       }
     } else {
-      return '已经与硬件端断开连接,关闭led失败';
+      return 'websocket服务器奔溃,关闭led失败';
     }
   },
   // 获取最新传感器数据
@@ -80,14 +80,13 @@ const commandMap = new Map([
   [['开灯', '开下灯', 'openled'], 'openLED'],
   [['关灯', '关下灯', 'closeled'], 'closeLED'],
   [['最新数据', '获取最新数据', '新数据', 'lastdata'], 'getLastSensorData'],
-  [['5', '获取最新5条数据'], 'getSensorDataByLimit'],
+  [['获取最新5条数据'], 'getSensorDataByLimit'],
 ]);
 
 // TODO: 优化面条式代码
 export default async (ctx, next) => {
   const message = ctx.formatDataFromWechat;
   let replayDataToWechat; // 准备发送给微信的数据
-  console.log(message);
   // 判断接收的数据类型
   if (message.MsgType === 'text') {
     // 判断是否控制指令
@@ -95,6 +94,27 @@ export default async (ctx, next) => {
       if (key.includes(message.Content)) {
         replayDataToWechat = await commandFunc[value]();
       }
+    }
+  } else if (message.MsgType === 'event') {
+    console.log(message.Event + '-----' + message.EventKey);
+    // replayDataToWechat = message.Event + '-----' + message.EventKey;
+    // 判断是否控制指令
+    switch (message.Event) {
+      case 'CLICK':
+        replayDataToWechat = await commandFunc[message.EventKey]();
+        break;
+      case 'subscribe':
+        replayDataToWechat = `欢迎订阅!
+      目前支持以下指令:
+          1.开灯,开下灯,openled --- 开启LED灯
+          2.关灯,关下灯,closeled --- 关闭LED灯
+          3.最新数据,获取最新数据,新数据,lastdata --- 最新的温湿度数据
+          4.获取最新5条数据, --- 获取最新5条数据
+        `;
+        break;
+      default:
+        replayDataToWechat = `目前不支持该事件类型:${message.Event}`;
+        break;
     }
   } else if (message.MsgType === 'image') {
     replayDataToWechat = {
@@ -124,9 +144,25 @@ export default async (ctx, next) => {
         url: message.Url,
       },
     ];
-  } else if (message.MsgType === 'event') {
-    console.log(message.Event + '-----' + message.EventKey);
-    replayDataToWechat = message.Event + '-----' + message.EventKey;
   }
   return replayDataToWechat;
 };
+
+// const createMemu = () => {
+//   const wechatClient = require('./index').wechatClient;
+//   const menu = {
+//     button: [
+//       {
+//         name: '指令',
+//         sub_button: [
+//           { type: 'click', name: '开灯', key: 'openLED', sub_button: [] },
+//           { type: 'click', name: '关灯', key: 'closeLED', sub_button: [] },
+//           { type: 'click', name: '获取最新数据', key: 'getLastSensorData', sub_button: [] },
+//           { type: 'click', name: '获取最新5条数据', key: 'getSensorDataByLimit', sub_button: [] },
+//         ],
+//       },
+//     ],
+//   };
+//   replayDataToWechat = await wechatClient.haddle('createMenu', menu);
+//   return replayDataToWechat
+// };

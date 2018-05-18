@@ -18,4 +18,6 @@ export const initDB = app => {
     console.log(`开始导入---${item}`);
     require(item);
   });
+  // TODO: 测试环境同步数据表
+  db.sync();
 };
