@@ -45,8 +45,11 @@ wss.on('connection', (ws, req) => {
   ws.on('message', message => {
     console.log('收到来自esp8266的信息 --- ' + message);
     // TODO: 校验数据合法性
-    const [temperature, humidity] = message.split(' ');
-    // TODO: 保存到数据库中
+    const [humidity, temperature] = message.split(' ');
+    if (!temperature || !humidity) {
+      console.log('无效的温湿度数据');
+      return;
+    }
     hdt11Data
       .create({ temperature, humidity })
       .then(data => {
