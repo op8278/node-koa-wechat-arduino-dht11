@@ -21,4 +21,5 @@ require('@babel/register')({
   ],
 });
 require('@babel/polyfill');
-require('./server');
+const koaAPP = require('./server');
+require('./websocket').start(koaAPP.default.originApp);

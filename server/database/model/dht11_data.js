@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import db from '../../database';
 
-const hdt11Data = db.define('hdt11_data', {
+const dht11Data = db.define('dht11_data', {
   id: {
     type: Sequelize.INTEGER(11),
     allowNull: false,
@@ -23,4 +23,4 @@ const hdt11Data = db.define('hdt11_data', {
   // TODO: 添加校验temperature,humidity的规则
 });
 
-export default hdt11Data;
+export default dht11Data;

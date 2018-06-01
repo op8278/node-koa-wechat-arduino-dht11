@@ -1,5 +1,5 @@
 import moment from 'moment';
-import hdt11 from '../database/model/hdt11_data';
+import hdt11 from '../database/model/dht11_data';
 
 // 组装回复给微信的传感器数据content
 const assembleSensorDataContent = (data, index) => {

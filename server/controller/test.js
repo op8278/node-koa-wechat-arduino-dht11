@@ -1,6 +1,6 @@
 import { controller, get, post } from '../decorator/router';
 import wss from '../../websocket/index.js';
-import hdt11_data from '../database/model/hdt11_data';
+import dht11_data from '../database/model/dht11_data';
 
 @controller('/test')
 export class TestController {
@@ -11,7 +11,7 @@ export class TestController {
     try {
       // wss.broadcast('测试跨文件访问websockt的广播send方法');
       // 查询数据库
-      const data = await hdt11_data.findAndCountAll();
+      const data = await dht11_data.findAndCountAll();
       // 整理数据
       console.log(data);
       // 返回JSON数据
@@ -28,7 +28,7 @@ export class TestController {
       const { temperature, humidity } = ctx.request.body;
       const data = { temperature, humidity };
       console.log(data);
-      const temp = await hdt11_data.create({ temperature, humidity });
+      const temp = await dht11_data.create({ temperature, humidity });
       ctx.apiSuccess(data);
     } catch (error) {
       console.log('controller---test---失败');

@@ -31,17 +31,18 @@ class Server {
       ctx.status = 200;
       ctx.req.session = ctx.session; // 绑定koa-session的ctx.session到ctx.req.session中
     });
-    this.originApp = this.app.listen(port, host);
-    console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
+    this.originApp = this.app.listen(port, host, () => {
+      console.log(`http服务器已经启动,端口为${port}`);
+    });
   }
   startWebsocket() {
     // 开启websocket服务器
-    // require('../websocket').start(this.originApp);
-    require('../websocket');
+    require('../websocket').start(this.originApp);
+    // require('../websocket');
   }
 }
 const app = new Server();
 app.start();
-app.startWebsocket();
+// app.startWebsocket();
 
 export default app;
