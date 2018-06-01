@@ -25,6 +25,7 @@ const commandFunc = {
   openLED: async () => {
     console.log('openLED');
     const { wss } = require('../../websocket');
+    console.log(wss);
     if (wss) {
       console.log('wss存在');
       try {
@@ -42,6 +43,7 @@ const commandFunc = {
   closeLED: async () => {
     console.log('closeLED');
     const { wss } = require('../../websocket');
+    console.log(wss);
     if (wss) {
       console.log('wss存在');
       try {
