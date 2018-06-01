@@ -1,13 +1,13 @@
 export default {
   server: {
     host: '127.0.0.1',
-    port: 3000,
+    port: 3999,
   },
   websocket: {
     port: 8088,
   },
   db: {
-    database: 'hdt11',
+    database: 'dht11',
     dialect: 'mysql',
     port: '3306',
     host: '127.0.0.1',
