@@ -24,37 +24,56 @@ const commandFunc = {
   // 开启led
   openLED: async () => {
     console.log('openLED');
-    const { wss } = require('../../websocket');
+    const { wss, start, broadcast } = require('../../websocket');
     console.log(wss);
-    if (wss) {
-      console.log('wss存在');
-      try {
-        await wss.broadcast('openLED');
-        return '开启led成功';
-      } catch (error) {
-        console.log(error);
-        return `开启led失败\n${error.message}`;
-      }
-    } else {
-      return 'websocket服务器奔溃,开启led失败';
+    console.log(start);
+    console.log(broadcast);
+
+    try {
+      await broadcast('openLED');
+      return '开启led成功';
+    } catch (error) {
+      console.log(error);
+      return `开启led失败\n${error.message}`;
     }
+
+    // if (wss) {
+    //   console.log('wss存在');
+    //   try {
+    //     await wss.broadcast('openLED');
+    //     return '开启led成功';
+    //   } catch (error) {
+    //     console.log(error);
+    //     return `开启led失败\n${error.message}`;
+    //   }
+    // } else {
+    //   return 'websocket服务器奔溃,开启led失败';
+    // }
   },
   // 关闭led
   closeLED: async () => {
     console.log('closeLED');
-    const { wss } = require('../../websocket');
+    const { wss, broadcast } = require('../../websocket');
     console.log(wss);
-    if (wss) {
-      console.log('wss存在');
-      try {
-        await wss.broadcast('closeLED');
-        return '关闭led成功';
-      } catch (error) {
-        console.log(error);
-        return `关闭led失败\n${error.message}`;
-      }
-    } else {
-      return 'websocket服务器奔溃,关闭led失败';
+    console.log(broadcast);
+    // if (wss) {
+    //   console.log('wss存在');
+    //   try {
+    //     await wss.broadcast('closeLED');
+    //     return '关闭led成功';
+    //   } catch (error) {
+    //     console.log(error);
+    //     return `关闭led失败\n${error.message}`;
+    //   }
+    // } else {
+    //   return 'websocket服务器奔溃,关闭led失败';
+    // }
+    try {
+      await broadcast('closeLED');
+      return '关闭led成功';
+    } catch (error) {
+      console.log(error);
+      return `关闭led失败\n${error.message}`;
     }
   },
   // 获取最新传感器数据

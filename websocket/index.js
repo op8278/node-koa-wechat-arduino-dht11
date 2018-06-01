@@ -4,12 +4,12 @@ const config = require('config').default;
 
 // websockt服务端
 let wss = null;
+console.log(1);
 function start(app) {
   // 开启websocket服务端
   // 将koa端口和websocket端口合并在一起
   wss = new WebSocket.Server({ server: app });
   // wss = new WebSocket.Server({ port: 8088 });
-
   // 广播客户端消息的方法
   wss.broadcast = async data => {
     const promiseArray = [];
@@ -77,10 +77,35 @@ function start(app) {
   wss.on('listening', () => {
     console.log(`websocket服务器已经启动,端口为${config.server.port}`);
   });
+  console.log(wss);
+}
+async function broadcast(data) {
+  const promiseArray = [];
+  wss.clients.forEach(client => {
+    const tempPromise = new Promise((resolve, reject) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(data, function(err) {
+          if (err) {
+            console.log(err);
+            return reject(new Error(err));
+          }
+          resolve();
+        });
+      } else {
+        reject(new Error('esp8266状态不为WebSocket.OPEN'));
+      }
+    });
+    promiseArray.push(tempPromise);
+  });
+  if (promiseArray.length === 0) {
+    return Promise.reject(new Error('没有与esp8266连接'));
+  }
+  return Promise.all(promiseArray);
 }
 
 module.exports = {
   start,
   wss,
+  broadcast,
 };
 // module.exports = wss;
