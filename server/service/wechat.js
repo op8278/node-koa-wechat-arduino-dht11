@@ -1,6 +1,6 @@
 import getRawBody from 'raw-body';
 import * as util from '../util';
-import wss from '../../websocket/index.js';
+import { wss } from '../../websocket/index.js';
 import { replyStrategy } from '../wechat';
 
 export const getMessageFromWechat = async (ctx, next, reply) => {

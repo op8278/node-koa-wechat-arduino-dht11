@@ -1,5 +1,5 @@
 import moment from 'moment';
-import hdt11 from '../database/model/dht11_data';
+import dht11 from '../database/model/dht11_data';
 
 // 组装回复给微信的传感器数据content
 const assembleSensorDataContent = (data, index) => {
@@ -58,7 +58,7 @@ const commandFunc = {
   // 获取最新传感器数据
   getLastSensorData: async () => {
     console.log('getLastSensorData');
-    const [data, ...ohter] = await hdt11.findAll({ limit: 1, order: [['create_time', 'DESC']] });
+    const [data, ...ohter] = await dht11.findAll({ limit: 1, order: [['create_time', 'DESC']] });
     console.log(data);
     const replyContent = assembleSensorDataContent(data);
     return replyContent;
@@ -66,7 +66,7 @@ const commandFunc = {
   // 根据limit条数获取传感器数据
   getSensorDataByLimit: async (limit = 5) => {
     console.log('getSensorDataByLimit');
-    const dataArray = await hdt11.findAll({ limit, order: [['create_time', 'DESC']] });
+    const dataArray = await dht11.findAll({ limit, order: [['create_time', 'DESC']] });
     console.log(dataArray);
     let replyContent = ``;
     dataArray.forEach((data, index) => {

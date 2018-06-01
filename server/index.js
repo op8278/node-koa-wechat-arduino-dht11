@@ -31,7 +31,7 @@ class Server {
       ctx.status = 200;
       ctx.req.session = ctx.session; // 绑定koa-session的ctx.session到ctx.req.session中
     });
-    this.originApp = this.app.listen(port, host, () => {
+    this.originApp = this.app.listen(port, () => {
       console.log(`http服务器已经启动,端口为${port}`);
     });
   }

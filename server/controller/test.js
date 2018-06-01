@@ -1,5 +1,5 @@
 import { controller, get, post } from '../decorator/router';
-import wss from '../../websocket/index.js';
+import { wss } from '../../websocket/index.js';
 import dht11_data from '../database/model/dht11_data';
 
 @controller('/test')
