@@ -8,7 +8,6 @@ function start(app) {
   // 开启websocket服务端
   // 将koa端口和websocket端口合并在一起
   wss = new WebSocket.Server({ server: app });
-  // wss = new WebSocket.Server({ port: 8088 });
   // 广播客户端消息的方法
   wss.broadcast = async data => {
     const promiseArray = [];

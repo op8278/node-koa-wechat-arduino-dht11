@@ -1,7 +1,7 @@
 {
-  "name": "node-koa-wechat-dht11",
+  "name": "node-koa-wechat-arduino-dht11",
   "version": "1.0.0",
-  "description": "微信公众号与温湿度传感器dht11配合",
+  "description": "微信公众号与Arduino,温湿度传感器dht11配合",
   "author": "op8278 <gdou_fish@163.com>",
   "private": true,
   "scripts": {
@@ -17,7 +17,6 @@
     "koa-session": "^5.8.1",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",
-    "mongoose": "^5.0.15",
     "mysql2": "^1.5.3",
     "ramda": "^0.25.0",
     "raw-body": "^2.3.2",

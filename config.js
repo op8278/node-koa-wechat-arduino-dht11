@@ -1,25 +1,19 @@
 export default {
   server: {
     host: '127.0.0.1',
-    port: 3999,
-  },
-  websocket: {
-    port: 8088,
+    port: 3999, // http服务器,websocket服务器的共用端口
   },
   db: {
-    database: 'dht11',
+    database: 'dht11', // 选择的database
     dialect: 'mysql',
-    port: '3306',
+    port: '3306', // 端口
     host: '127.0.0.1',
-    username: 'root',
-    password: 'root',
+    username: 'root', // 数据库账户
+    password: 'root', // 数据库密码
   },
-  site_root_url: 'http://ssr.hk1.mofasuidao.cn', // 项目域名
-  admin_email: 'admin@admin.com', // 默认管理员邮箱(帐号)
-  admin_password: 'admin', // 默认管理员密码
   wechat: {
-    appID: 'wx0d95ddaac2cd9285', // 测试公众号
-    appSecret: 'b7e871670d6997a887736f976d52e717', // 测试公众号
-    token: 'hellowechat',
+    appID: '你的公众号的appID', // 公众号
+    appSecret: '你的公众号的appSecret', // 公众号
+    token: '你的公众号的token', // 公众号
   },
 };
