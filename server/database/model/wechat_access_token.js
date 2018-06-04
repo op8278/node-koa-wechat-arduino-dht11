@@ -12,8 +12,6 @@ const wechatAccessToken = db.define('wechat_access_token', {
   },
   expires_in: {
     type: Sequelize.BIGINT,
-    // TODO: INTEGER?
-    // type: Sequelize.BIGINT,
   },
   create_time: {
     type: Sequelize.DATE,

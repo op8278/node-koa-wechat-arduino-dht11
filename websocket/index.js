@@ -4,7 +4,6 @@ const config = require('config').default;
 
 // websockt服务端
 let wss = null;
-console.log(1);
 function start(app) {
   // 开启websocket服务端
   // 将koa端口和websocket端口合并在一起

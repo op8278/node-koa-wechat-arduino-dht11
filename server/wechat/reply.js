@@ -24,11 +24,7 @@ const commandFunc = {
   // 开启led
   openLED: async () => {
     console.log('openLED');
-    const { wss, start, broadcast } = require('../../websocket');
-    console.log(wss);
-    console.log(start);
-    console.log(broadcast);
-
+    const { broadcast } = require('../../websocket');
     try {
       await broadcast('openLED');
       return '开启led成功';
@@ -36,7 +32,6 @@ const commandFunc = {
       console.log(error);
       return `开启led失败\n${error.message}`;
     }
-
     // if (wss) {
     //   console.log('wss存在');
     //   try {
@@ -53,21 +48,7 @@ const commandFunc = {
   // 关闭led
   closeLED: async () => {
     console.log('closeLED');
-    const { wss, broadcast } = require('../../websocket');
-    console.log(wss);
-    console.log(broadcast);
-    // if (wss) {
-    //   console.log('wss存在');
-    //   try {
-    //     await wss.broadcast('closeLED');
-    //     return '关闭led成功';
-    //   } catch (error) {
-    //     console.log(error);
-    //     return `关闭led失败\n${error.message}`;
-    //   }
-    // } else {
-    //   return 'websocket服务器奔溃,关闭led失败';
-    // }
+    const { broadcast } = require('../../websocket');
     try {
       await broadcast('closeLED');
       return '关闭led成功';

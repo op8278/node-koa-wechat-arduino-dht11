@@ -35,14 +35,8 @@ class Server {
       console.log(`http服务器已经启动,端口为${port}`);
     });
   }
-  startWebsocket() {
-    // 开启websocket服务器
-    require('../websocket').start(this.originApp);
-    // require('../websocket');
-  }
 }
 const app = new Server();
 app.start();
-// app.startWebsocket();
 
 export default app;
