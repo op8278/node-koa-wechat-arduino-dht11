@@ -11,9 +11,15 @@
 
 服务端主要的第三方模块
 
-* Koa2
-* sequelize
-* ws
+* [koa](https://github.com/koajs/koa)
+* [sequelize](https://github.com/sequelize/sequelize)
+* [ws](https://github.com/websockets/ws)
+
+Arduino 端主要的第三方模块
+
+* [ESP8266 core for Arduino](https://github.com/esp8266/Arduino)
+* [arduinoWebSockets](https://github.com/Links2004/arduinoWebSockets)
+* [DHT11 library for Arduino](https://github.com/adidax/dht11)
 
 ### 配置
 
@@ -28,6 +34,8 @@
 * `wechat.appID` ： 公众号的 appID
 * `wechat.appSecret` ： 公众号的 appSecret
 * `wechat.token` ： 公众号的 token
+
+注意：其中`db`的配置可以参考[sequelize](https://github.com/sequelize/sequelize)的文档
 
 ### 控制指令
 
@@ -67,10 +75,20 @@ const commandFunc = {
 
 ### 安装
 
-1.  `git clone https://github.com/op8278/node-koa-wechat-dht11.git`
+1.  `git clone https://github.com/op8278/node-koa-wechat-arduino-dht11.git`
 2.  `cd node-koa-wechat-dht11`
 3.  `yarn intalll 或者 npm install`
 
 ### 运行
 
 1.  `npm run dev`
+
+### 演示
+
+![控制指令](https://github.com/op8278/node-koa-wechat-arduino-dht11/blob/master/img/控制指令.jpg)
+
+![关灯状态](https://github.com/op8278/node-koa-wechat-arduino-dht11/blob/master/img/关灯状态.jpg)
+
+![开灯状态](https://github.com/op8278/node-koa-wechat-arduino-dht11/blob/master/img/开灯状态.jpg)
+
+![获取最新数据](https://github.com/op8278/node-koa-wechat-arduino-dht11/blob/master/img/获取最新数据.jpg)
